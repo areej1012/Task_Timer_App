@@ -9,18 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskTimerApp">
-        <activity
-            android:name=".activity.SummaryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.TaskListActivity"
-            android:exported="false" />
-        <activity android:name=".activity.GetStartedActivity">
+        <activity android:name=".activity.SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SummaryActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".activity.TaskListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.GetStartedActivity"
+            android:exported="false">
+
         </activity>
     </application>
 
