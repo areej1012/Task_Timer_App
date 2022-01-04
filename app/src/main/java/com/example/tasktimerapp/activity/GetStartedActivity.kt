@@ -1,5 +1,6 @@
 package com.example.tasktimerapp.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mynoteapp.lightStatueBar
@@ -14,8 +15,11 @@ class GetStartedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGetStartedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setUI()
+       binding.getStartedButton.setOnClickListener{
+           val intent = Intent(this,TaskListActivity::class.java)
+           startActivity(intent)
+       }
 
     }
 
