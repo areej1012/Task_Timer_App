@@ -1,11 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_background">
 
+    <ImageView
+        android:id="@+id/get_started_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20sp"
+        android:src="@drawable/get_started_img"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/get_started_statement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/make_your_life_more_n_organized"
+        android:textColor="@color/white_gray"
+        android:textSize="32sp"
+        android:lineSpacingExtra="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/get_started_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
+    <Button
+        android:id="@+id/get_started_button"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_margin="50dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="@string/get_started"
+        android:background="@drawable/button_white"
+        android:textColor="@color/dark_blue"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/get_started_statement" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
