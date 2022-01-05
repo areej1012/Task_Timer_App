@@ -1,4 +1,4 @@
-package database
+package com.example.tasktimerapp.database
 
 import android.content.Context
 import androidx.room.Database
@@ -14,7 +14,7 @@ abstract class TaskDatabase: RoomDatabase() {
         @Volatile  // writes to this field are immediately visible to other threads
         private var INSTANCE: TaskDatabase? = null
 
-        fun getDatabase(context: Context): TaskDatabase{
+        fun getDatabase(context: Context): TaskDatabase {
             val tempInstance = INSTANCE
             if(tempInstance != null){
                 return tempInstance
