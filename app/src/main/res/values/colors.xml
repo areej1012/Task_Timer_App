@@ -13,4 +13,6 @@
     <color name="white_gray">#eef1f8</color>
     <color name="dark_blue">#111d5e</color>
     <color name="card_bc">#e9ecf4</color>
+    <color name="gray_light">#A1A1A1</color>
+    <color name="gray_dark">#505050</color>
 </resources>
