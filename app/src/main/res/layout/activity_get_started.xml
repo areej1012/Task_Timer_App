@@ -25,6 +25,7 @@
         android:text="@string/make_your_life_more_n_organized"
         android:textColor="@color/white_gray"
         android:textSize="32sp"
+        android:lineSpacingExtra="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/get_started_image"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
