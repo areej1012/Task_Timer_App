@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mynoteapp.lightStatueBar
 import com.example.mynoteapp.setFullScreen
+import com.example.tasktimerapp.adapter.ViewPagerAdapter
 import com.example.tasktimerapp.databinding.ActivityGetStartedBinding
 
 class GetStartedActivity : AppCompatActivity() {
@@ -16,10 +17,11 @@ class GetStartedActivity : AppCompatActivity() {
         binding = ActivityGetStartedBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUI()
-       binding.getStartedButton.setOnClickListener{
-           val intent = Intent(this,TaskListActivity::class.java)
-           startActivity(intent)
-       }
+        binding.viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
+        binding.skip.setOnClickListener{
+            val intent = Intent(this,TaskListActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
