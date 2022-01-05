@@ -5,43 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.TaskListActivity">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mainRV"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/linearLayout"
-        />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <View
+        android:id="@+id/gradient_header"
+        android:layout_width="match_parent"
+        android:layout_height="85sp"
+        android:background="@drawable/gradient_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/menu_button"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/burger_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/gradient_header"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/task_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
+        android:fontFamily="sans-serif-medium"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:text="@string/all_tasks"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gradient_header" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/task_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="@+id/bttn_click"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_header"
+        app:spanCount="2"
+        tools:listitem="@layout/task_card" />
+
+
+    <ImageButton
+        android:id="@+id/bttn_click"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="50sp"
+        android:background="@drawable/button_circle"
+        android:padding="10sp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/add_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/add_new_task" />
 
-        <EditText
-            android:id="@+id/editTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Enter your Task"
-
-            android:minHeight="48dp" />
-
-        <Button
-            android:id="@+id/bttn_click"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#c46df9"
-            android:textSize="20dp"
-            android:textColor="#ffffff"
-            android:layout_weight="1"
-            android:text="Add Task" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

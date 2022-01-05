@@ -2,4 +2,10 @@
     <string name="app_name">Task Timer App</string>
     <string name="make_your_life_more_n_organized">Make your Life More \nOrganized</string>
     <string name="get_started">GET STARTED</string>
+    <string name="add_new_task">Add New task</string>
+    <string name="tasks">Tasks</string>
+    <string name="all_tasks">All tasks</string>
+    <string name="task_descriptions">Task Descriptions</string>
+    <string name="task_title">Task Title</string>
+    <string name="add_task">Add Task</string>
 </resources>
