@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskTimerApp">
-        <activity android:name=".activity.SplashScreenActivity"
+        <activity
+            android:name=".activity.AddTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,16 +23,17 @@
         </activity>
         <activity
             android:name=".activity.SummaryActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".activity.TaskListActivity"
             android:exported="false" />
         <activity
             android:name=".activity.GetStartedActivity"
-            android:exported="false">
+            android:exported="false"></activity>
 
-        </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

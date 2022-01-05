@@ -1,32 +1,48 @@
 package com.example.tasktimerapp.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mynoteapp.lightStatueBar
+import com.example.mynoteapp.setFullScreen
 import com.example.tasktimerapp.adapter.TaskAdapter
 import com.example.tasktimerapp.databinding.ActivityTaskListBinding
 
 class TaskListActivity : AppCompatActivity() {
 
+
     private lateinit var binding: ActivityTaskListBinding
-    lateinit var tasks: ArrayList<String>
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var taskAdapter: TaskAdapter
+    private lateinit var tasks: ArrayList<String>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTaskListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        tasks = arrayListOf()
+
+        setUI()
+
+        tasks = arrayListOf("arwa","","","","","","","","","",)
+        setRecyclerview()
 
         binding.bttnClick.setOnClickListener {
-            if (binding.editTxt.text != null){
-                tasks.add(binding.editTxt.text.toString())
-                binding.editTxt.text = null
-            }
-            else{
-                Toast.makeText(this, "Enter something ", Toast.LENGTH_LONG).show()
-            }
+            val intent = Intent(this, AddTaskActivity::class.java)
+            startActivity(intent)
         }
-        binding.mainRV.adapter = TaskAdapter(tasks)
-        binding.mainRV.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun setUI() {
+        setFullScreen(window)
+        lightStatueBar(window)
+    }
+    private fun setRecyclerview() {
+        recyclerView = binding.taskRecyclerview
+        taskAdapter = TaskAdapter(tasks)
+        recyclerView.adapter = taskAdapter
     }
 }
