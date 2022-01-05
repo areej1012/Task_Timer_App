@@ -1,4 +1,4 @@
-package database
+package com.example.tasktimerapp.database
 
 import androidx.room.*
 
@@ -6,6 +6,6 @@ import androidx.room.*
 @Dao
 interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addPerson(person: Task)
+    fun addPerson(person: Task)
 
 }
