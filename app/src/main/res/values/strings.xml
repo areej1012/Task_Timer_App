@@ -8,4 +8,5 @@
     <string name="task_descriptions">Task Descriptions</string>
     <string name="task_title">Task Title</string>
     <string name="add_task">Add Task</string>
+    <string name="_00_00">00:00</string>
 </resources>
