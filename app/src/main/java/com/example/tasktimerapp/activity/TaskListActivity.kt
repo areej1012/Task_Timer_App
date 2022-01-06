@@ -50,6 +50,8 @@ class TaskListActivity : AppCompatActivity() {
 
         binding.menuButton.setOnClickListener {
             binding.drawerLayout.openDrawer(Gravity.LEFT)
+//            val intent = Intent(this,TaskDetailsActivity::class.java)
+//            startActivity(intent)
         }
     }
 

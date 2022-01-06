@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TaskDetailsActivity">
+
+    <View
+        android:id="@+id/gradient_header"
+        android:layout_width="match_parent"
+        android:layout_height="85sp"
+        android:background="@drawable/gradient_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/back_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/gradient_header"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/edit_button"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:backgroundTint="@color/transparent"
+        android:src="@drawable/edit_icon_white"
+        app:layout_constraintBottom_toBottomOf="@+id/gradient_header"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.Large.Circle"
+                android:layout_width="280sp"
+                android:layout_height="280sp"
+                app:SpinKit_Color="@color/purple"
+                android:background="@color/card_bc"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Chronometer
+                android:id="@+id/task_timer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:lineSpacingExtra="10sp"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:text="@string/_00_00"
+                android:textColor="@color/white"
+                android:textSize="38sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/spin_kit"
+                app:layout_constraintStart_toStartOf="@+id/spin_kit"
+                app:layout_constraintTop_toTopOf="@+id/spin_kit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/stop_timer_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/stop_gra_icon"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/start_timer_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="50sp"
+                android:layout_marginEnd="50sp"
+                android:background="@drawable/push_gra_icon"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/restart_timer_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/restart_gra_icon"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/task_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:gravity="center"
+            android:text="@string/task_title"
+            android:textColor="@color/black"
+            android:textSize="28sp" />
+        <TextView
+            android:id="@+id/task_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:gravity="center"
+            android:text="@string/task_descriptions"
+            android:textColor="@color/gray_dark"
+            android:textSize="22sp" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
