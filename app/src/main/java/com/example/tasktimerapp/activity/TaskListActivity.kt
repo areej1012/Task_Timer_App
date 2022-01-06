@@ -61,7 +61,7 @@ class TaskListActivity : AppCompatActivity() {
     }
     private fun setRecyclerview() {
         recyclerView = binding.taskRecyclerview
-        taskAdapter = TaskAdapter(tasks)
+        taskAdapter = TaskAdapter(tasks, this)
         recyclerView.adapter = taskAdapter
     }
 
