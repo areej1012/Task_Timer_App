@@ -1,12 +1,17 @@
 package com.example.tasktimerapp.adapter
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimerapp.R
@@ -49,7 +54,7 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
         holder.binding.apply {
             taskTitle.text = taskItem.title
             taskDescription.text = taskItem.description
-            taskTimer.base =  taskItem.total_Time
+            taskTimer.base = taskItem.total_Time
         }
 
         // UI Actions
@@ -71,12 +76,7 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
 
             // Delete Button
             deleteButton.setOnClickListener {
-                TaskDatabase.getDatabase(context.applicationContext)
-                CoroutineScope(Dispatchers.IO).launch {
-                    TaskDatabase.getDatabase(context.applicationContext).TaskDao().deleteTask(taskItem)
-                }
-                tasks.remove(taskItem)
-                notifyDataSetChanged()
+                alert(taskItem)
             }
 
             // Timer Button
@@ -148,6 +148,39 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
                 taskCardContainer.setBackgroundResource(R.color.card_bc)
             }
         }
+    }
+
+    private fun alert(task: Task) {
+        val dialog = Dialog(context)
+        dialog.setContentView(R.layout.alert_button)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val closeButton = dialog.findViewById<ImageView>(R.id.close_icon)
+        val yesButton = dialog.findViewById<Button>(R.id.yes_button)
+        val cancelButton = dialog.findViewById<Button>(R.id.cancel_button)
+
+        dialog.show()
+
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        yesButton.setOnClickListener {
+            delete(task)
+            dialog.dismiss()
+        }
+        cancelButton.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun delete(task: Task) {
+        TaskDatabase.getDatabase(context.applicationContext)
+        CoroutineScope(Dispatchers.IO).launch {
+            TaskDatabase.getDatabase(context.applicationContext).TaskDao().deleteTask(task)
+        }
+        tasks.remove(task)
+        notifyDataSetChanged()
     }
 
 
