@@ -15,7 +15,12 @@ import com.example.mynoteapp.lightStatueBar
 import com.example.mynoteapp.setFullScreen
 import com.example.tasktimerapp.R
 import com.example.tasktimerapp.adapter.TaskAdapter
+import com.example.tasktimerapp.database.Task
+import com.example.tasktimerapp.database.TaskDatabase
 import com.example.tasktimerapp.databinding.ActivityTaskListBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class TaskListActivity : AppCompatActivity() {
 
@@ -23,7 +28,8 @@ class TaskListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTaskListBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var taskAdapter: TaskAdapter
-    private lateinit var tasks: ArrayList<String>
+    private lateinit var taskString: ArrayList<String>
+    private lateinit var tasks: ArrayList<Task>
     private lateinit var toggle : ActionBarDrawerToggle
 
 
@@ -32,16 +38,14 @@ class TaskListActivity : AppCompatActivity() {
         binding = ActivityTaskListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open,R.string.close)
-        binding.drawerLayout.addDrawerListener (toggle)
-
-        toggle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         setUI()
 
-        tasks = arrayListOf("arwa", "", "", "", "", "", "", "", "", "")
-        setRecyclerview()
+        CoroutineScope(Dispatchers.IO).launch {
+            tasks = TaskDatabase.getDatabase(applicationContext).TaskDao().getTask() as ArrayList<Task>
+            println("All Tasks")
+            println(tasks)
+            setRecyclerview()
+        }
 
         binding.bttnClick.setOnClickListener {
             val intent = Intent(this, AddTaskActivity::class.java)
@@ -50,18 +54,20 @@ class TaskListActivity : AppCompatActivity() {
 
         binding.menuButton.setOnClickListener {
             binding.drawerLayout.openDrawer(Gravity.LEFT)
-//            val intent = Intent(this,TaskDetailsActivity::class.java)
-//            startActivity(intent)
         }
     }
 
     private fun setUI() {
+        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open,R.string.close)
+        binding.drawerLayout.addDrawerListener (toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setFullScreen(window)
         lightStatueBar(window)
     }
     private fun setRecyclerview() {
         recyclerView = binding.taskRecyclerview
-        taskAdapter = TaskAdapter(tasks)
+        taskAdapter = TaskAdapter(tasks, this)
         recyclerView.adapter = taskAdapter
     }
 

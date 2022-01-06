@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AddTaskActivity">
+    tools:context=".activity.UpdateTaskActivity">
 
     <View
         android:id="@+id/gradient_header"
@@ -34,7 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <EditText
             android:id="@+id/task_title_et"
             android:layout_width="match_parent"
@@ -58,18 +57,46 @@
             android:hint="@string/task_descriptions"
             android:padding="10dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/task_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_taken_00_00"
+                android:layout_marginEnd="10sp"
+                android:textSize="24sp"/>
+            <TextView
+                android:id="@+id/reset_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:text="@string/reset"
+                android:textColor="@color/purple"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+
+
         <Button
-            android:id="@+id/add_task_button"
+            android:id="@+id/update_task_button"
             android:layout_width="356dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/gradient_corner"
             android:padding="10dp"
-            android:text="@string/add_task"
+            android:text="@string/update_task"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20sp" />
+
+
 
     </LinearLayout>
 

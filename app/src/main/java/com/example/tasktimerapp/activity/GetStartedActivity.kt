@@ -3,10 +3,8 @@ package com.example.tasktimerapp.activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.icu.number.NumberFormatter.with
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings.System.putString
 import com.example.mynoteapp.lightStatueBar
 import com.example.mynoteapp.setFullScreen
 import com.example.tasktimerapp.R

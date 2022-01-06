@@ -48,10 +48,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:lineSpacingExtra="10sp"
-            android:maxLines="2"
             android:padding="10dp"
-            android:text="@string/_00_00"
             android:visibility="invisible"
             android:textColor="@color/white"
             android:textSize="38sp"
@@ -59,17 +56,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/task_title" />
 
-        <TextView
-            android:id="@+id/push_timer_button"
+        <Button
+            android:id="@+id/start_stop_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:clickable="true"
             android:visibility="invisible"
-            android:background="@drawable/push_icon"
+            android:background="@drawable/start_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/done_button"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:background="@drawable/done_icon"
+            android:gravity="center"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/start_stop_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_timer" />
+
+        <Button
+            android:id="@+id/restart_button"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:background="@drawable/restart_icon"
+            android:gravity="center"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/start_stop_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task_timer" />
 
         <ImageButton
             android:id="@+id/edit_button"
