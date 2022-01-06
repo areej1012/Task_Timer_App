@@ -51,8 +51,10 @@
                 style="@style/SpinKitView.Large.Circle"
                 android:layout_width="280sp"
                 android:layout_height="280sp"
+                android:padding="10dp"
+                android:visibility="invisible"
                 app:SpinKit_Color="@color/purple"
-                android:background="@color/card_bc"
+                app:SpinKit_Style="MultiplePulseRing"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +71,7 @@
                 android:maxLines="2"
                 android:padding="10dp"
                 android:text="@string/_00_00"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_dark"
                 android:textSize="38sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/spin_kit"
@@ -81,19 +83,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="30sp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/stop_timer_button"
+                android:id="@+id/restart_timer_button"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/stop_gra_icon"
+                android:background="@drawable/restart_gra_icon"
                 android:gravity="center" />
 
             <Button
-                android:id="@+id/start_timer_button"
+                android:id="@+id/start_stop_button"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="50sp"
@@ -102,10 +104,10 @@
                 android:gravity="center" />
 
             <Button
-                android:id="@+id/restart_timer_button"
+                android:id="@+id/done_button"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/restart_gra_icon"
+                android:background="@drawable/stop_gra_icon"
                 android:gravity="center" />
         </LinearLayout>
 

@@ -12,11 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimerapp.R
 import com.example.tasktimerapp.activity.TaskDetailsActivity
 import com.example.tasktimerapp.activity.TaskListActivity
+import com.example.tasktimerapp.activity.UpdateTaskActivity
 import com.example.tasktimerapp.database.Task
+import com.example.tasktimerapp.database.TaskDatabase
 import com.example.tasktimerapp.databinding.TaskCardBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-class TaskAdapter(private val tasks: List<String>, val context: Context) :
+class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
     RecyclerView.Adapter<TaskAdapter.ItemViewHolder>() {
 
     inner class ItemViewHolder(var binding: TaskCardBinding) : RecyclerView.ViewHolder(binding.root)
@@ -40,12 +45,38 @@ class TaskAdapter(private val tasks: List<String>, val context: Context) :
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val taskItem = tasks[position]
 
+        // UI Values
+        holder.binding.apply {
+            taskTitle.text = taskItem.title
+            taskDescription.text = taskItem.description
+            taskTimer.base =  taskItem.total_Time
+        }
+
+        // UI Actions
         holder.binding.apply {
 
-            // Go to task detailes
+            // Go to task details
             taskCardContainer.setOnClickListener {
                 val intent = Intent(context, TaskDetailsActivity::class.java)
+                intent.putExtra("task", taskItem)
                 context.startActivity(intent)
+            }
+
+            // Go to task edit
+            editButton.setOnClickListener {
+                val intent = Intent(context, UpdateTaskActivity::class.java)
+                intent.putExtra("task", taskItem)
+                context.startActivity(intent)
+            }
+
+            // Delete Button
+            deleteButton.setOnClickListener {
+                TaskDatabase.getDatabase(context.applicationContext)
+                CoroutineScope(Dispatchers.IO).launch {
+                    TaskDatabase.getDatabase(context.applicationContext).TaskDao().deleteTask(taskItem)
+                }
+                tasks.remove(taskItem)
+                notifyDataSetChanged()
             }
 
             // Timer Button
@@ -122,59 +153,3 @@ class TaskAdapter(private val tasks: List<String>, val context: Context) :
 
 }
 
-
-//override fun onBindViewHolder(holder: TaskAdapter.ItemViewHolder, position: Int) {
-//    val taskItem = tasks[position]
-//
-//    holder.binding.apply {
-//
-//        timeButton.setOnClickListener {
-//            isPlay = true
-//            if (isPlay) {
-//                changeVisible(true, holder.binding)
-//                bindingTask = holder.binding
-//                taskTimer.base = SystemClock.elapsedRealtime() - stopTime
-//                taskTimer.start()
-//                startStopButton.setOnClickListener {
-//                    taskTimer.stop()
-//                    stopTime = SystemClock.elapsedRealtime() - taskTimer.base
-//                    isPlay = false
-//                    Log.e("stoptime", stopTime.toString())
-//                    stopTime = 0
-//
-//                }
-//
-//            }
-////                else {
-////                    //old
-////                    bindingTask?.taskTimer!!.stop()
-////                    stopTime = SystemClock.elapsedRealtime() - bindingTask?.taskTimer!!.base
-////
-////                    changeVisible(false, bindingTask!!)
-////
-////                    // save stop time
-////                    bindingTask = holder.binding
-////                    stopTime = 0
-////
-////                    //new
-////                    startStopButton.isVisible = true
-////                    taskTimer.isVisible = true
-////                    taskDescription.isVisible = false
-////                    editButton.isVisible = false
-////                    deleteButton.isVisible = false
-////                    timeButton.isVisible = false
-////                    taskTimer.base = SystemClock.elapsedRealtime() - stopTime
-////                    taskTimer.start()
-////                    startStopButton.setOnClickListener {
-////                        taskTimer.stop()
-////                        stopTime = SystemClock.elapsedRealtime() - taskTimer.base
-////                        isPlay = false
-////                        Log.e("stoptime", stopTime.toString())
-////                        stopTime = 0
-////
-////                    }
-////                }
-//        }
-//
-//    }
-//}

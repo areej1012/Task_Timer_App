@@ -17,4 +17,7 @@
     <string name="statement1">Reach your goals faster with Lifetrack</string>
     <string name="statement2">Get that satisfying feeling when marking them done</string>
     <string name="statement3">Save time and be productive by creating daily tasks</string>
+    <string name="update_task">Update task</string>
+    <string name="time_taken_00_00">Time Taken = 00:00</string>
+    <string name="reset">Reset</string>
 </resources>

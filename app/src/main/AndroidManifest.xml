@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskTimerApp">
         <activity
+            android:name=".activity.UpdateTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.TaskDetailsActivity"
             android:exported="false" />
         <activity
