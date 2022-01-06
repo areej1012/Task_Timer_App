@@ -7,6 +7,8 @@ import androidx.room.*
 interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addTask(task: Task)
+    @Query("SELECT * FROM task ORDER BY id ASC")
+    fun getTask(): List<Task>
     @Update
     suspend fun updateTask(task: Task)
 }
