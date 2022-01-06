@@ -8,10 +8,13 @@
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/drawable/gradient_background.xml" value="0.18425925925925926" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/drawable/gradient_corner.xml" value="0.2128205128205128" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/drawable/gradient_header.xml" value="0.2128205128205128" />
+        <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/drawable/help_icon.xml" value="0.17965367965367965" />
+        <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/drawable/my_circle.xml" value="0.17965367965367965" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/activity_add_task.xml" value="0.1859375" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/activity_get_started.xml" value="0.19444444444444445" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/activity_summary.xml" value="0.1859375" />
+        <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/activity_task_details.xml" value="0.16842105263157894" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/activity_task_list.xml" value="0.22" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/fragment_slide1.xml" value="0.16842105263157894" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/fragment_slide2.xml" value="0.16842105263157894" />
@@ -21,6 +24,7 @@
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/task_card.xml" value="0.2" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/task_row.xml" value="0.16842105263157894" />
         <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/layout/test.xml" value="0.16842105263157894" />
+        <entry key="..\:/Users/asus-pc/AndroidStudioProjects/Project/Task_Timer_App/app/src/main/res/menu/nav_menu.xml" value="0.16666666666666666" />
       </map>
     </option>
   </component>
