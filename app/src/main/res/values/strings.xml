@@ -20,4 +20,7 @@
     <string name="update_task">Update task</string>
     <string name="time_taken_00_00">Time Taken = 00:00</string>
     <string name="reset">Reset</string>
+    <string name="delete_the_task">Delete the task?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 </resources>
