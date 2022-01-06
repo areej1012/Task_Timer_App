@@ -19,7 +19,6 @@ import com.example.tasktimerapp.databinding.ActivityTaskListBinding
 
 class TaskListActivity : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityTaskListBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var taskAdapter: TaskAdapter

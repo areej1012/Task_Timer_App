@@ -10,5 +10,5 @@ interface TaskDao {
     @Query("SELECT * FROM task ORDER BY id ASC")
     fun getTask(): List<Task>
     @Update
-    suspend fun updateTask(task: Task)
+     fun updateTask(task: Task)
 }

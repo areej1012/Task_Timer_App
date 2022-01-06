@@ -51,6 +51,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/button_white"
             android:gravity="top"
+            android:inputType="text"
             android:hint="@string/task_descriptions"
             android:padding="10dp" />
 
