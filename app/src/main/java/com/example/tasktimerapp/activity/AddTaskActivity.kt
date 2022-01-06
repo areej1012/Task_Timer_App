@@ -9,13 +9,14 @@ import com.example.tasktimerapp.databinding.ActivityAddTaskBinding
 class AddTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddTaskBinding
-//Shuaa
+//Mariam
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUI()
     }
+
 
     private fun setUI() {
         setFullScreen(window)
