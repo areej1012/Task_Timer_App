@@ -67,7 +67,15 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
+                <View
+                    android:id="@+id/blank_id"
+                    android:layout_width="280sp"
+                    android:layout_height="280sp"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Chronometer
                     android:id="@+id/task_timer"
@@ -81,10 +89,10 @@
                     android:text="@string/_00_00"
                     android:textColor="@color/gray_dark"
                     android:textSize="38sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/spin_kit"
-                    app:layout_constraintStart_toStartOf="@+id/spin_kit"
-                    app:layout_constraintTop_toTopOf="@+id/spin_kit" />
+                    app:layout_constraintBottom_toBottomOf="@id/blank_id"
+                    app:layout_constraintEnd_toEndOf="@+id/blank_id"
+                    app:layout_constraintStart_toStartOf="@+id/blank_id"
+                    app:layout_constraintTop_toTopOf="@+id/blank_id" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -108,14 +116,14 @@
                     android:layout_height="80dp"
                     android:layout_marginStart="50sp"
                     android:layout_marginEnd="50sp"
-                    android:background="@drawable/push_gra_icon"
+                    android:background="@drawable/start_gra_icon"
                     android:gravity="center" />
 
                 <Button
                     android:id="@+id/done_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/stop_gra_icon"
+                    android:background="@drawable/done_gra_icon"
                     android:gravity="center" />
             </LinearLayout>
 

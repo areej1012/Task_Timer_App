@@ -33,11 +33,11 @@ class AddTaskActivity : AppCompatActivity() {
         binding.apply {
 
             addTaskButton.setOnClickListener {
-                if (taskTitleEt.text.isNotEmpty() || taskDescriptionEt.text.isNotEmpty()) {
+                if (taskTitleEt.text.isNotEmpty() && taskDescriptionEt.text.isNotEmpty()) {
 
                     val taskTitle = taskTitleEt.text.toString()
                     val taskDescription = taskDescriptionEt.text.toString()
-                    task = Task(0, taskTitle , taskDescription, SystemClock.elapsedRealtime()-0)
+                    task = Task(0, taskTitle , taskDescription, 0)
 
                     TaskDatabase.getDatabase(applicationContext)
                     CoroutineScope(Dispatchers.IO).launch {
