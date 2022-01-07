@@ -30,17 +30,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="30sp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="30sp"
+        android:layout_marginTop="30sp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginBottom="65sp"
         app:piv_animationType="worm"
         app:piv_radius="5dp"
         app:piv_selectedColor="@color/white_gray"
         app:piv_strokeWidth="5dp"
         app:piv_unselectedColor="@color/purple_200"
-        app:piv_viewPager="@id/view_pager" />
+        app:piv_viewPager="@id/view_pager_help" />
 
 
 </RelativeLayout>
