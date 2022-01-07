@@ -13,8 +13,10 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setFullScreen(window)
         lightStatueBar(window)
+        actionBar?.hide()
         setContentView(com.example.tasktimerapp.R.layout.activity_splash_screen)
         android.os.Handler().postDelayed({
+
             startActivity(android.content.Intent(this, GetStartedActivity::class.java))
             finish()
         }, splashScreentimeot)

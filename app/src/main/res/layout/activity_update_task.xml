@@ -49,7 +49,6 @@
             android:id="@+id/task_description_et"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:inputType="text"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/button_white"

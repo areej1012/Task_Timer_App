@@ -16,6 +16,7 @@ class GetStartedActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGetStartedBinding
     private lateinit var sharedPreferences: SharedPreferences
     private var isFirst: Boolean = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGetStartedBinding.inflate(layoutInflater)

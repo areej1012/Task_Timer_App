@@ -1,12 +1,18 @@
 package com.example.tasktimerapp.activity
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.mynoteapp.lightStatueBar
 import com.example.mynoteapp.setFullScreen
+import com.example.tasktimerapp.R
 import com.example.tasktimerapp.database.Task
 import com.example.tasktimerapp.database.TaskDatabase
 import com.example.tasktimerapp.databinding.ActivityUpdateTaskBinding
@@ -46,6 +52,10 @@ class UpdateTaskActivity : AppCompatActivity() {
                         TaskDatabase.getDatabase(applicationContext).TaskDao().updateTask(task)
                     }
 
+                    alert("Success Updated",true)
+
+                } else {
+                    alert("Pleases Fill all blanks", false)
                 }
             }
 
@@ -75,6 +85,28 @@ class UpdateTaskActivity : AppCompatActivity() {
         val date = Date(time)
         val format = SimpleDateFormat("mm:ss")
         return format.format(date)
+    }
+
+    private fun alert(message: String, isSuccess: Boolean) {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.custom_alert)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val successTextView = dialog.findViewById<TextView>(R.id.success_text)
+        val successImageView = dialog.findViewById<ImageView>(R.id.success_image)
+        val closeButton = dialog.findViewById<ImageView>(R.id.close_icon)
+
+        if (!isSuccess) {
+            successImageView.setImageResource(R.drawable.failed)
+        }
+
+        successTextView.text = message
+        dialog.show()
+
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
     }
 
 }

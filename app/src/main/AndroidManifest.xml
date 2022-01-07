@@ -13,6 +13,9 @@
             android:name=".activity.HelpActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.AboutUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.UpdateTaskActivity"
             android:exported="false" />
         <activity
