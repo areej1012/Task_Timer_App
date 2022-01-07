@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
     tools:openDrawer="start"
+    android:layoutDirection="ltr"
     tools:context=".activity.TaskListActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
