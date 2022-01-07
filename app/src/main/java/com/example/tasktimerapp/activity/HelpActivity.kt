@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mynoteapp.lightStatueBar
 import com.example.mynoteapp.setFullScreen
-import com.example.tasktimerapp.databinding.ActivitySummaryBinding
+import com.example.tasktimerapp.R
+import com.example.tasktimerapp.databinding.ActivityHelpBinding
 
-class SummaryActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivitySummaryBinding
-
+class HelpActivity : AppCompatActivity() {
+    lateinit var binding: ActivityHelpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySummaryBinding.inflate(layoutInflater)
+        binding = ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setUI()
@@ -20,7 +19,6 @@ class SummaryActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener {
             finish()
         }
-
     }
 
     private fun setUI() {
