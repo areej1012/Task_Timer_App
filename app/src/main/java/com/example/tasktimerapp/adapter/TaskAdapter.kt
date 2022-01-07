@@ -1,22 +1,20 @@
 package com.example.tasktimerapp.adapter
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.SystemClock
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimerapp.R
 import com.example.tasktimerapp.activity.TaskDetailsActivity
-import com.example.tasktimerapp.activity.TaskListActivity
 import com.example.tasktimerapp.activity.UpdateTaskActivity
 import com.example.tasktimerapp.database.Task
 import com.example.tasktimerapp.database.TaskDatabase
@@ -35,6 +33,10 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
     var stopTime: Long = 0
     var bindingTask: TaskCardBinding? = null
 
+    var anotherTaskIsWork = false
+
+    var previousTask: Task = Task(-1, "", "", 0)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
             TaskCardBinding.inflate(
@@ -48,13 +50,14 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
     override fun getItemCount() = tasks.size
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+
         val taskItem = tasks[position]
 
         // UI Values
         holder.binding.apply {
             taskTitle.text = taskItem.title
             taskDescription.text = taskItem.description
-            taskTimer.base = taskItem.total_Time
+            taskTimer.base = SystemClock.elapsedRealtime() - taskItem.total_Time
         }
 
         // UI Actions
@@ -83,16 +86,30 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
             timeButton.setOnClickListener {
                 if (bindingTask != null) {
                     taskTimer.stop()
+                    bindingTask!!.taskTimer.stop()
+
                     changeVisible(false, bindingTask!!)
+                    if (!isPlay && previousTask.id > -1) { // إذا شغلت تاسك 1 ووقفت التايمر وضغطت على تاسك ثانية
+                        save(previousTask)
+                    } else {
+                        println("ANOTHER TASK IS PLAY")
+                        if (previousTask.id > -1) {
+                            stopTime = SystemClock.elapsedRealtime() - bindingTask!!.taskTimer.base
+                            previousTask.total_Time = stopTime
+                            save(previousTask)
+                        }
+                    }
+                    resetTimer()
                 }
                 changeVisible(true, holder.binding)
                 bindingTask = holder.binding
-                resetTimer()
             }
 
             // Done Button
             doneButton.setOnClickListener {
                 changeVisible(false, holder.binding)
+                taskItem.total_Time = stopTime
+                save(taskItem)
                 resetTimer()
             }
 
@@ -102,13 +119,21 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
                     isPlay = false
                     taskTimer.stop()
                     stopTime = SystemClock.elapsedRealtime() - taskTimer.base
-
+                    startStopButton.setBackgroundResource(R.drawable.start_icon)
+                    taskItem.total_Time = stopTime
+                    previousTask = taskItem
+                    println("Timer Stop in $stopTime")
                 } else {
                     isPlay = true
                     bindingTask = holder.binding
+                    previousTask = taskItem
                     changeVisible(true, holder.binding)
                     startStopButton.setBackgroundResource(R.drawable.stop_icon)
-                    taskTimer.base = SystemClock.elapsedRealtime() - stopTime
+                    if (stopTime.toInt() == 0) {
+                        taskTimer.base = SystemClock.elapsedRealtime() - taskItem.total_Time
+                    } else {
+                        taskTimer.base = SystemClock.elapsedRealtime() - stopTime
+                    }
                     taskTimer.start()
                 }
 
@@ -119,6 +144,8 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
                 resetTimer()
                 taskTimer.stop()
                 taskTimer.base = SystemClock.elapsedRealtime() - 0
+                taskItem.total_Time = 0
+                save(taskItem)
             }
 
         }
@@ -127,6 +154,24 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
     private fun resetTimer() {
         stopTime = 0
         isPlay = false
+    }
+
+    private fun save(task: Task) {
+        TaskDatabase.getDatabase(context.applicationContext)
+        CoroutineScope(Dispatchers.IO).launch {
+            TaskDatabase.getDatabase(context.applicationContext).TaskDao().updateTask(task)
+        }
+        Toast.makeText(context, "Task Timer Successfully Updated", Toast.LENGTH_SHORT).show()
+        println("Task Save: $task")
+    }
+
+    private fun delete(task: Task) {
+        TaskDatabase.getDatabase(context.applicationContext)
+        CoroutineScope(Dispatchers.IO).launch {
+            TaskDatabase.getDatabase(context.applicationContext).TaskDao().deleteTask(task)
+        }
+        tasks.remove(task)
+        notifyDataSetChanged()
     }
 
     private fun changeVisible(timerIsStart: Boolean, binding: TaskCardBinding) {
@@ -171,16 +216,6 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
         cancelButton.setOnClickListener {
             dialog.dismiss()
         }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun delete(task: Task) {
-        TaskDatabase.getDatabase(context.applicationContext)
-        CoroutineScope(Dispatchers.IO).launch {
-            TaskDatabase.getDatabase(context.applicationContext).TaskDao().deleteTask(task)
-        }
-        tasks.remove(task)
-        notifyDataSetChanged()
     }
 
 
