@@ -23,4 +23,5 @@
     <string name="delete_the_task">Delete the task?</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
+    <string name="task_card">Task Card</string>
 </resources>

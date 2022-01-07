@@ -87,7 +87,6 @@ class TaskListActivity : AppCompatActivity() {
             when(id){
                 R.id.home ->
                     startActivity(Intent(this, TaskListActivity::class.java))
-
                 R.id.summary ->
                     startActivity(Intent(this, SummaryActivity::class.java))
 

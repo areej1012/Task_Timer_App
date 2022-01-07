@@ -6,35 +6,36 @@
     android:layout_height="match_parent"
     android:background="#e0e0e0"
     tools:context=".activity.SplashScreenActivity">
+
     <ImageView
         android:id="@+id/img_logo"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/time_icon"
         android:layout_centerInParent="true"
-        />
+        android:src="@drawable/logo" />
+
     <TextView
         android:id="@+id/text_splash"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-      android:layout_below="@+id/img_logo"
-        android:text="Task Timer"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:textStyle="bold"
+        android:layout_below="@+id/img_logo"
         android:layout_marginTop="10dp"
-        android:textColor="@color/purple_500" />
+        android:text="My Tasks"
+        android:textAlignment="center"
+        android:textColor="@color/purple"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
-        android:layout_below="@+id/text_splash"
-        android:layout_marginTop="20dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:indeterminate="true"
+        android:layout_below="@+id/text_splash"
         android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="70dp"
-        android:indeterminateTint="@color/purple_700"/>
+        android:indeterminate="true"
+        android:indeterminateTint="@color/blue" />
 
 </RelativeLayout>

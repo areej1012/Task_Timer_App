@@ -1,9 +1,14 @@
 package com.example.tasktimerapp.activity
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.mynoteapp.lightStatueBar
@@ -67,7 +72,11 @@ class TaskDetailsActivity : AppCompatActivity() {
                 save(task)
             }
             doneButton.setOnClickListener {
+                save(task)
+            }
 
+            taskDescriptionButton.setOnClickListener {
+                alert()
             }
 
 
@@ -82,7 +91,6 @@ class TaskDetailsActivity : AppCompatActivity() {
         task = intent.getSerializableExtra("task") as Task
         binding.apply {
             taskTitle.text = task.title
-            taskDescription.text = task.description
             taskTimer.base = SystemClock.elapsedRealtime() - task.total_Time
         }
     }
@@ -99,6 +107,25 @@ class TaskDetailsActivity : AppCompatActivity() {
         }
         Toast.makeText(this, "Task Timer Successfully Updated", Toast.LENGTH_SHORT).show()
         println("Task Save: $task")
+    }
+
+    private fun alert() {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.task_description_card)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val taskTitle = dialog.findViewById<TextView>(R.id.task_title_alert)
+        val taskDescription = dialog.findViewById<TextView>(R.id.task_detail_alert)
+        val closeButton = dialog.findViewById<ImageView>(R.id.close_icon)
+
+        taskTitle.text = task.title
+        taskDescription.text = task.description
+        dialog.show()
+
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
     }
 
 }

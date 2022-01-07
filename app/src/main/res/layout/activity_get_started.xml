@@ -38,11 +38,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="50dp"
-        android:textSize="22sp"
-        android:textAllCaps="false"
         android:background="@color/transparent"
+        android:text="Skip"
+        android:textAllCaps="false"
         android:textColor="@color/white_gray"
-        android:text="Skip" />
+        android:textSize="22sp" />
 
 
 

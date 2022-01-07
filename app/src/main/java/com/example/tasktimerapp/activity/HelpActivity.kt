@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.example.mynoteapp.lightStatueBar
 import com.example.mynoteapp.setFullScreen
 import com.example.tasktimerapp.R
+import com.example.tasktimerapp.adapter.ViewPagerAdapter
+import com.example.tasktimerapp.adapter.ViewPagerHelpAdapter
 import com.example.tasktimerapp.databinding.ActivityHelpBinding
 
 class HelpActivity : AppCompatActivity() {
@@ -15,6 +17,7 @@ class HelpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setUI()
+        binding.viewPagerHelp.adapter = ViewPagerHelpAdapter(supportFragmentManager)
 
         binding.backButton.setOnClickListener {
             finish()

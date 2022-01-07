@@ -137,15 +137,18 @@
                 android:textColor="@color/black"
                 android:textSize="28sp" />
 
-            <TextView
-                android:id="@+id/task_description"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/task_description_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15sp"
                 android:gravity="center"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:padding="10dp"
                 android:text="@string/task_descriptions"
-                android:textColor="@color/gray_dark"
-                android:textSize="22sp" />
+                android:background="@color/card_bc"
+                android:textColor="@color/gray_light"/>
 
 
         </LinearLayout>

@@ -33,8 +33,6 @@ class TaskAdapter(private val tasks: ArrayList<Task>, val context: Context) :
     var stopTime: Long = 0
     var bindingTask: TaskCardBinding? = null
 
-    var anotherTaskIsWork = false
-
     var previousTask: Task = Task(-1, "", "", 0)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
