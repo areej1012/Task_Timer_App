@@ -65,8 +65,7 @@ class UpdateTaskActivity : AppCompatActivity() {
             }
 
             backButton.setOnClickListener {
-                val intent = Intent(this@UpdateTaskActivity, TaskListActivity::class.java)
-                startActivity(intent)
+                finish()
             }
 
         }
