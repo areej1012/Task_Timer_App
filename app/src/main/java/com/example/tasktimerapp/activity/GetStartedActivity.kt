@@ -40,6 +40,10 @@ class GetStartedActivity : AppCompatActivity() {
     private fun checkIsFirstTime() {
         isFirst = sharedPreferences.getBoolean("is_first", true)
         if (!isFirst) {
+//            with(sharedPreferences.edit()) {
+//                putBoolean("is_first", true)
+//                apply()
+//            }
             val intent = Intent(this, TaskListActivity::class.java)
             startActivity(intent)
             finish()
