@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mynoteapp.lightStatueBar
 import com.example.mynoteapp.setFullScreen
@@ -43,6 +44,9 @@ class TaskListActivity : AppCompatActivity() {
                 TaskDatabase.getDatabase(applicationContext).TaskDao().getTask() as ArrayList<Task>
             println("All Tasks")
             println(tasks)
+            if (tasks.size != 0 ) {
+                binding.noTaskId.isVisible = false
+            }
             setRecyclerview()
         }
 

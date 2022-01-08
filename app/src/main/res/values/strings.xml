@@ -24,4 +24,5 @@
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
     <string name="task_card">Task Card</string>
+    <string name="no_tasks">No Tasks</string>
 </resources>
