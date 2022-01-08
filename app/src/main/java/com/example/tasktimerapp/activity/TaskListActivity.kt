@@ -86,12 +86,17 @@ class TaskListActivity : AppCompatActivity() {
             val id = menuItem.itemId
             when(id){
                 R.id.home ->
-                    startActivity(Intent(this, TaskListActivity::class.java))
-                R.id.summary ->
-                    startActivity(Intent(this, SummaryActivity::class.java))
+                        binding.drawerLayout.closeDrawers()
 
-                R.id.help ->
+                R.id.summary -> {
+                    binding.drawerLayout.closeDrawers()
+                    startActivity(Intent(this, SummaryActivity::class.java))
+                }
+
+                R.id.help -> {
+                    binding.drawerLayout.closeDrawers()
                     startActivity(Intent(this, HelpActivity::class.java))
+                }
             }
             return@OnNavigationItemSelectedListener true
         }
