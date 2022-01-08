@@ -48,7 +48,9 @@ class TaskListActivity : AppCompatActivity() {
                 binding.noTaskId.isVisible = false
             }
             setRecyclerview()
+
         }
+
 
         binding.bttnClick.setOnClickListener {
             val intent = Intent(this, AddTaskActivity::class.java)
