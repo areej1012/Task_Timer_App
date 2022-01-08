@@ -17,7 +17,9 @@ import com.example.tasktimerapp.databinding.ActivityTaskListBinding
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 class TaskListActivity : AppCompatActivity() {
@@ -38,14 +40,6 @@ class TaskListActivity : AppCompatActivity() {
         initNavigationDrawer()
         setUI()
 
-        CoroutineScope(Dispatchers.IO).launch {
-            tasks =
-                TaskDatabase.getDatabase(applicationContext).TaskDao().getTask() as ArrayList<Task>
-            println("All Tasks")
-            println(tasks)
-            setRecyclerview()
-        }
-
         binding.bttnClick.setOnClickListener {
             val intent = Intent(this, AddTaskActivity::class.java)
             startActivity(intent)
@@ -56,6 +50,24 @@ class TaskListActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        readData()
+    }
+
+    private fun readData() {
+        CoroutineScope(Dispatchers.IO).launch {
+            tasks =
+                TaskDatabase.getDatabase(applicationContext).TaskDao().getTask() as ArrayList<Task>
+
+            withContext(Main){
+                println("All Tasks")
+                println(tasks)
+                setRecyclerview()
+            }
+        }
     }
 
     private fun setUI() {
