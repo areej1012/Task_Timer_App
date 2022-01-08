@@ -30,7 +30,7 @@ class TaskDetailsActivity : AppCompatActivity() {
     private lateinit var task: Task
 
     private var isPlay = false
-    private var stopTime = 0
+    private var stopTime : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +56,7 @@ class TaskDetailsActivity : AppCompatActivity() {
                     startStopButton.setBackgroundResource(R.drawable.start_gra_icon)
                     spinKit.isVisible = false
                     taskTimer.stop()
+                    stopTime = SystemClock.elapsedRealtime() - taskTimer.base
                 } else {
                     isPlay = true
                     startStopButton.setBackgroundResource(R.drawable.push_gra_icon)
@@ -72,7 +73,9 @@ class TaskDetailsActivity : AppCompatActivity() {
                 save(task)
             }
             doneButton.setOnClickListener {
+                task.total_Time = stopTime
                 save(task)
+                resetTimer()
             }
 
             taskDescriptionButton.setOnClickListener {
