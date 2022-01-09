@@ -52,7 +52,9 @@ class AddTaskActivity : AppCompatActivity() {
             }
 
             backButton.setOnClickListener {
-               finish()
+                val intent = Intent(this@AddTaskActivity, TaskListActivity::class.java)
+                startActivity(intent)
+               // finish()
             }
 
         }

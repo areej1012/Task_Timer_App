@@ -31,6 +31,7 @@ class TaskDetailsActivity : AppCompatActivity() {
 
     private var isPlay = false
     private var stopTime : Long = 0
+    private var isStop = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +62,14 @@ class TaskDetailsActivity : AppCompatActivity() {
                     isPlay = true
                     startStopButton.setBackgroundResource(R.drawable.push_gra_icon)
                     spinKit.isVisible = true
+                    if (task.total_Time > 0 && !isStop ){
+                        taskTimer.base = SystemClock.elapsedRealtime() - task.total_Time
+                    } else if (isStop) {
+                        taskTimer.base = SystemClock.elapsedRealtime() - stopTime
+                        isStop = false
+                    } else {
+                        taskTimer.base = SystemClock.elapsedRealtime() - 0
+                    }
                     taskTimer.start()
                 }
             }
@@ -94,7 +103,11 @@ class TaskDetailsActivity : AppCompatActivity() {
         task = intent.getSerializableExtra("task") as Task
         binding.apply {
             taskTitle.text = task.title
-            taskTimer.base = SystemClock.elapsedRealtime() - task.total_Time
+            if (task.total_Time > 0 ) {
+                taskTimer.base = SystemClock.elapsedRealtime() - task.total_Time
+            } else {
+                taskTimer.base = SystemClock.elapsedRealtime() - 0
+            }
         }
     }
 
